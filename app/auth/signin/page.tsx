@@ -1,3 +1,4 @@
+import GoogleButton from "@/components/google-button";
 import SignInForm from "@/components/sign-in-form";
 
 export default function SignInPage({
@@ -14,7 +15,8 @@ export default function SignInPage({
           Something went wrong. Please, try again later
         </div>
       )}
-      <SignInForm />
+      {/* <SignInForm /> */}
+      <GoogleButton />
     </>
   );
 }
