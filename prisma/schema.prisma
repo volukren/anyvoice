@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement()) @map("id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  name          String?   @map("name")
+  email         String    @unique @map("email")
+  emailVerified DateTime? @map("email_verified")
+  image         String?   @map("image")
+  role          String    @default("user") @map("role")
+
+  samples SampleAudio[]
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String   @map("identifier")
+  token      String   @map("token")
+  expires    DateTime @map("expires")
+
+  @@id([identifier, token])
+  @@map("verification_tokens")
+}
+
+model SampleAudio {
+  id        Int      @id @default(autoincrement()) @map("id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  userId Int  @map("user_id")
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  audioFile String @map("audio_file")
+
+  requests Request[]
+
+  @@map("sample_audios")
+}
+
+model Request {
+  id        Int      @id @default(autoincrement()) @map("id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  sampleAudioId Int         @map("sample_audio_id")
+  sampleAudio   SampleAudio @relation(fields: [sampleAudioId], references: [id], onDelete: Cascade)
+
+  text           String @map("text")
+  characterCount Int    @map("character_count")
+
+  // created, processing, success, error
+  status String @default("created") @map("status")
+
+  @@map("requests")
+}
