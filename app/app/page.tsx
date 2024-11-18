@@ -1,8 +1,5 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth/options";
 
-export default async function PrivateLayout() {
-  const session = await getServerSession(authOptions);
+export default async function MyVoicesPage() {
 
   return (
     <>

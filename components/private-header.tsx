@@ -5,6 +5,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { MenuIcon, XIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 const links = [
   {
@@ -45,7 +46,10 @@ export default function PrivateHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-bold py-2 px-3 rounded-md hover:bg-primary/5 hover:text-primary"
+              className={clsx(
+                "font-bold py-2 px-3 rounded-md hover:bg-primary/5 hover:text-primary",
+                { "bg-primary/5 text-primary": pathname === link.href },
+              )}
             >
               {link.label}
             </Link>

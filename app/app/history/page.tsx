@@ -7,7 +7,7 @@ export default async function HistoryPage() {
   return (
     <>
       <h1 className="text-2xl font-bold text-primary">History</h1>
-      <div className="py-5">
+      <div className="my-2 p-5 bg-white rounded-md">
         <table className="w-full border">
           <thead className="text-left text-lg bg-gray-50 border-b">
             <tr>

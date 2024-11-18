@@ -1,11 +1,12 @@
 "use client";
 import clsx from "clsx";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, CrownIcon, GiftIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 type Plan = {
   name: string;
+  spots?: number;
   price: number;
   yearlyPrice: number;
   features: string[];
@@ -16,6 +17,7 @@ type Plan = {
 const plans: Plan[] = [
   {
     name: "Lifetime Plan",
+    spots: 100,
     price: 299,
     yearlyPrice: 299,
     features: [
@@ -95,6 +97,14 @@ export default function Pricing({ className }: { className: string }) {
             {plan.recommended && (
               <div className="absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 bg-primary text-white px-2 py-1 rounded-md font-semibold">
                 Recommended
+              </div>
+            )}
+            {plan.spots && (
+              <div className="flex py-3">
+                <div className="py-1.5 px-2 bg-orange-300 font-bold rounded-full text-sm flex items-center gap-2 select-none">
+                  <GiftIcon className="w-5 h-5 text-slate-800" />
+                  <span>Only {plan.spots} spots left</span>
+                </div>
               </div>
             )}
             <h3 className="text-2xl font-bold text-primary">{plan.name}</h3>
