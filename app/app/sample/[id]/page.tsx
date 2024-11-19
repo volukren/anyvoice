@@ -1,4 +1,5 @@
 import { getSampleById } from "@/actions/get-sample-by-id";
+import GenerateVoiceForm from "@/components/generate-voice-form";
 import { notFound } from "next/navigation";
 
 export default async function SamplePage({
@@ -13,8 +14,16 @@ export default async function SamplePage({
 
   if (!sampleFromDB) {
     notFound();
-    return;
   }
 
-  return <>{sampleFromDB.name}</>;
+  return (
+    <>
+      <h1 className="text-xl md:text-2xl font-bold text-primary">
+        Text-to-Speech with "{sampleFromDB.name}" Voice
+      </h1>
+      <div className="bg-white rounded-md p-5 my-2">
+        <GenerateVoiceForm voiceId={sampleFromDB.id} />
+      </div>
+    </>
+  );
 }

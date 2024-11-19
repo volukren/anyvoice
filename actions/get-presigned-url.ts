@@ -9,7 +9,7 @@ import { s3Client } from "@/lib/s3";
 const mime = require("mime-types");
 
 export async function getPresignedUrl(
-  fileType: string,
+  fileType: string
 ): Promise<{ success: boolean; url?: string; filename?: string }> {
   try {
     const session = await getServerSession(authOptions);
@@ -19,15 +19,15 @@ export async function getPresignedUrl(
       };
     }
 
-    const filename = `users/${session.user.email}/${uuidv4()}.${mime.extension(fileType)}`;
+    const filename = `${uuidv4()}.${mime.extension(fileType)}`;
 
     const command = new PutObjectCommand({
       Bucket: process.env.CLOUDFLARE_BUCKET_NAME!,
-      Key: filename,
+      Key: `users/${session.user.email}/samples/${filename}`,
       ContentType: fileType,
     });
 
-    const url = await getSignedUrl(s3Client, command, { expiresIn: 3600 }); // URL будет действовать 1 час
+    const url = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
 
     return {
       success: true,
