@@ -84,18 +84,17 @@ export default function AudioUploader({
     }
   }
 
-  function openFileSelector() {
-    if (!loading) {
-      document.getElementById("file-uploader")?.click();
-    }
-  }
-
   return (
     <>
       <>
         {!file && !loading && (
           <button
-            onClick={openFileSelector}
+            onClick={(e) => {
+              e.preventDefault();
+              if (!loading) {
+                document.getElementById("file-uploader")?.click();
+              }
+            }}
             className="border-2 border-dashed p-5 rounded-md flex justify-center items-center gap-2"
           >
             <FolderIcon />
@@ -108,7 +107,12 @@ export default function AudioUploader({
         {file && !loading && (
           <div className="flex justify-center items-center gap-2 border-2 border-dashed p-5 rounded-md">
             <span>{file.name}</span>
-            <button onClick={() => setFile(null)}>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setFile(null);
+              }}
+            >
               <TrashIcon className="w-4 h-4" />
             </button>
           </div>
