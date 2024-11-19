@@ -18,13 +18,14 @@ model User {
   image         String?   @map("image")
   role          String    @default("user") @map("role")
 
-  samples SampleAudio[]
+  samples  SampleAudio[]
   accounts Account[]
+
   @@map("users")
 }
 
 model Account {
-  userId            Int  @map("user_id")
+  userId            Int     @map("user_id")
   type              String  @map("type")
   provider          String  @map("provider")
   providerAccountId String  @map("provider_account_id")
@@ -62,6 +63,7 @@ model SampleAudio {
   user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   audioFile String @map("audio_file")
+  name      String @map("name")
 
   requests Request[]
 
