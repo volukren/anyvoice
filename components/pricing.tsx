@@ -90,52 +90,57 @@ export default function Pricing({ className }: { className: string }) {
         {plans.map((plan, i) => (
           <div
             key={i}
-            className={clsx("border-2 px-5 py-10 rounded-md relative", {
-              "border-red-600": plan.recommended,
-            })}
+            className={clsx(
+              "border-2 px-5 py-10 rounded-md relative flex flex-col gap-4",
+              {
+                "border-red-600": plan.recommended,
+              }
+            )}
           >
-            {plan.recommended && (
-              <div className="absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 bg-primary text-white px-2 py-1 rounded-md font-semibold">
-                Recommended
-              </div>
-            )}
-            {plan.spots && (
-              <div className="flex py-3">
-                <div className="py-1.5 px-2 bg-orange-300 font-bold rounded-full text-sm flex items-center gap-2 select-none">
-                  <GiftIcon className="w-5 h-5 text-slate-800" />
-                  <span>Only {plan.spots} spots left</span>
+            <div className="flex-1">
+              {plan.recommended && (
+                <div className="absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 bg-primary text-white px-2 py-1 rounded-md font-semibold">
+                  Recommended
                 </div>
-              </div>
-            )}
-            <h3 className="text-2xl font-bold text-primary">{plan.name}</h3>
-            <div className="py-4 flex flex-col gap-2 text-left">
-              <h4 className="text-xl font-bold line-through text-gray-500">
-                ${yearly ? plan.yearlyPrice * 2 : plan.price * 2}
-              </h4>
-              <div className="flex items-center gap-2">
-                <h4 className="text-3xl font-bold">
-                  ${yearly ? plan.yearlyPrice : plan.price}
-                </h4>
-                <span className="font-semibold text-gray-500">
-                  /{plan.period}
-                </span>
-              </div>
-              {plan.period === "one-time" && (
-                <span className="text-sm text-gray-800 font-bold py-2">
-                  Pay once, use forever
-                </span>
               )}
-              <div className="font-bold text-lg text-green-600">50% OFF</div>
-            </div>
-            <div className="grid gap-1">
-              {plan.features.map((feature, i) => (
-                <p key={i} className="text-sm flex items-center gap-2">
-                  <span className="w-5 h-5">
-                    <CheckIcon className="w-5 h-5 text-green-600" />
+              {plan.spots && (
+                <div className="flex py-3">
+                  <div className="py-1.5 px-2 bg-orange-300 font-bold rounded-full text-sm flex items-center gap-2 select-none">
+                    <GiftIcon className="w-5 h-5 text-slate-800" />
+                    <span>Only {plan.spots} spots left</span>
+                  </div>
+                </div>
+              )}
+              <h3 className="text-2xl font-bold text-primary">{plan.name}</h3>
+              <div className="py-4 flex flex-col gap-2 text-left">
+                <h4 className="text-xl font-bold line-through text-gray-500">
+                  ${yearly ? plan.yearlyPrice * 2 : plan.price * 2}
+                </h4>
+                <div className="flex items-center gap-2">
+                  <h4 className="text-3xl font-bold">
+                    ${yearly ? plan.yearlyPrice : plan.price}
+                  </h4>
+                  <span className="font-semibold text-gray-500">
+                    /{plan.period}
                   </span>
-                  <span className="text-base">{feature}</span>
-                </p>
-              ))}
+                </div>
+                {plan.period === "one-time" && (
+                  <span className="text-sm text-gray-800 font-bold py-2">
+                    Pay once, use forever
+                  </span>
+                )}
+                <div className="font-bold text-lg text-green-600">50% OFF</div>
+              </div>
+              <div className="grid gap-1">
+                {plan.features.map((feature, i) => (
+                  <p key={i} className="text-sm flex items-center gap-2">
+                    <span className="w-5 h-5">
+                      <CheckIcon className="w-5 h-5 text-green-600" />
+                    </span>
+                    <span className="text-base">{feature}</span>
+                  </p>
+                ))}
+              </div>
             </div>
             <div className="pt-5">
               <Link

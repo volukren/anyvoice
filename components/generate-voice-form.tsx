@@ -1,5 +1,6 @@
 "use client";
 import { textToSpeech } from "@/actions/text-to-speech";
+import { ExternalLinkIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import { z } from "zod";
@@ -87,10 +88,24 @@ export default function GenerateVoiceForm({ voiceId }: GenerateVoiceFormProps) {
           <Link
             href={url}
             download="speech.wav"
-            className="text-primary border-2 border-primary text-center font-bold p-2 rounded-md"
+            className="text-primary border-2 border-primary text-center font-bold p-2 rounded-md w-full hover:bg-primary hover:text-primary-foreground transition-colors"
           >
-            Download generated audio
+            Download wav audio
           </Link>
+          <div className="py-10">
+            <span className="text-primary">
+              Use this free tool if you need another format
+            </span>
+            <Link
+              href="https://convertio.co/wav-mp3/"
+              className="text-blue-600 flex items-center gap-2 hover:underline mt-2"
+              target="_blank"
+              rel="noreferrer noopener nofollow"
+            >
+              <span>Convert to mp3/OGG/m4a etc</span>
+              <ExternalLinkIcon className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       )}
     </>

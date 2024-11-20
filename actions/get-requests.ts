@@ -27,6 +27,9 @@ export async function getRequests() {
           in: samples.map((sample) => sample.id),
         },
       },
+      include: {
+        sampleAudio: true,
+      },
       orderBy: {
         createdAt: "desc",
       },
