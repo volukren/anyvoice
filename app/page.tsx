@@ -12,7 +12,7 @@ export default function Home() {
         <div className="pt-5">
           <Header />
         </div>
-        <Hero className="py-20" />
+        <Hero className="pt-20 pb-32" />
         <Examples />
         <Pricing className="py-16 lg:py-32" />
         <div className="py-16 lg:py-32">

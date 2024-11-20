@@ -21,7 +21,7 @@ const examples = [
 
 export default function Examples() {
   return (
-    <div className="border px-5 py-10 rounded-md">
+    <div className="border px-5 py-8 rounded-md">
       <h2 className="text-2xl md:text-3xl text-primary font-bold text-center">
         Cloned Voice Examples
       </h2>
