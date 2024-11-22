@@ -17,7 +17,7 @@ type Plan = {
 const plans: Plan[] = [
   {
     name: "Lifetime Plan",
-    spots: 100,
+    spots: 50,
     price: 299,
     yearlyPrice: 299,
     features: [
@@ -94,7 +94,7 @@ export default function Pricing({ className }: { className: string }) {
               "border-2 px-5 py-10 rounded-md relative flex flex-col gap-4",
               {
                 "border-red-600": plan.recommended,
-              }
+              },
             )}
           >
             <div className="flex-1">
