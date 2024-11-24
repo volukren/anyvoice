@@ -1,10 +1,7 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
-import EmailProvider from "next-auth/providers/email";
 import GoogleProvider from "next-auth/providers/google";
 import { NextAuthOptions } from "next-auth";
-import LoginLink from "@/emails/login-link";
-import { sendEmail } from "@/emails";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -16,19 +13,6 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-    // EmailProvider({
-    //   async sendVerificationRequest({ identifier, url }) {
-    //     if (process.env.NODE_ENV === "development") {
-    //       console.log(`Login link: ${url}`);
-    //     } else {
-    //       await sendEmail({
-    //         email: identifier,
-    //         subject: `Your AnyVoice Login link`,
-    //         react: LoginLink({ url, email: identifier }),
-    //       });
-    //     }
-    //   },
-    // }),
   ],
   callbacks: {
     session: async ({ session, token, user }) => {

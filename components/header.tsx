@@ -12,7 +12,7 @@ export default function Header() {
         AnyVoice
       </Link>
       <div className="flex gap-4 items-center">
-        <div className="mr-2 hidden md:flex md:items-center md:gap-2">
+        <div className="hidden md:flex md:items-center md:gap-2">
           <Link
             href="/#pricing"
             className="font-semibold py-2 px-3 rounded-md hover:bg-primary/5 hover:text-primary"

@@ -4,6 +4,7 @@ import { CheckIcon, GiftIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Plan, plans } from "@/lib/constants";
+import { useSession } from "next-auth/react";
 
 export default function Pricing({
   className,
@@ -15,6 +16,21 @@ export default function Pricing({
   showTitle?: boolean;
 }) {
   const [yearly, setYearly] = useState<boolean>(true);
+  const { data: session, status } = useSession();
+
+  function getPlanLink(plan: Plan) {
+    if (link) {
+      return link;
+    }
+    const clientReferenceId = session?.user?.id!;
+    const url = new URL(yearly ? plan.yearlyLink : plan.link);
+    url.searchParams.append("prefilled_email", session?.user.email as string);
+    url.searchParams.append(
+      "client_reference_id",
+      clientReferenceId.toString(),
+    );
+    return url.href;
+  }
 
   return (
     <div className={className} id="pricing">
@@ -24,7 +40,7 @@ export default function Pricing({
         </h2>
       )}
       <div className="flex justify-center items-center gap-5 py-5">
-        <div className="flex gap-2 bg-red-50 rounded-full p-2">
+        <div className="flex gap-2 bg-primary/5 rounded-full p-2 border border-primary/10">
           <button
             className={clsx("p-1 rounded-full font-semibold", {
               "bg-primary border-primary text-primary-foreground": !yearly,
@@ -46,7 +62,7 @@ export default function Pricing({
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10 py-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 py-10">
         {plans.map((plan: Plan, i) => (
           <div
             key={i}
@@ -54,21 +70,13 @@ export default function Pricing({
               "border-2 px-5 py-10 rounded-md relative flex flex-col gap-4",
               {
                 "border-red-600": plan.recommended,
-              }
+              },
             )}
           >
             <div className="flex-1">
               {plan.recommended && (
                 <div className="absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 bg-primary text-white px-2 py-1 rounded-md font-semibold">
                   Recommended
-                </div>
-              )}
-              {plan.spots && (
-                <div className="flex py-3">
-                  <div className="py-1.5 px-2 bg-orange-300 font-bold rounded-full text-sm flex items-center gap-2 select-none">
-                    <GiftIcon className="w-5 h-5 text-slate-800" />
-                    <span>Only {plan.spots} spots left</span>
-                  </div>
                 </div>
               )}
               <h3 className="text-2xl font-bold text-primary">{plan.name}</h3>
@@ -104,7 +112,14 @@ export default function Pricing({
             </div>
             <div className="pt-5">
               <Link
-                href={link ? link : yearly ? plan.yearlyLink : plan.link}
+                onClick={(event) => {
+                  if (status !== "authenticated") {
+                    event.preventDefault();
+                  }
+                }}
+                href={getPlanLink(plan)}
+                rel={!link ? "noopener noreferrer" : ""}
+                target={!link ? "_blank" : "_self"}
                 className="border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white duration-300 transition-all px-4 py-3 rounded-md block text-center"
               >
                 Get {plan.name}

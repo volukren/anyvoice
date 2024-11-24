@@ -1,9 +1,16 @@
 import { authOptions } from "@/lib/auth/options";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { prisma } from "@/lib/prisma";
 
 export default async function SettingsPage() {
   const session = await getServerSession(authOptions);
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: session?.user.id,
+    },
+  });
 
   return (
     <>
@@ -23,7 +30,7 @@ export default async function SettingsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-lg py-2">
             <div className="font-semibold">Subscription Plan</div>
-            <div className="flex">Basic</div>
+            <div className="flex">{user?.plan || "No plan"}</div>
             <div className="flex md:justify-end">
               <Link
                 href="/app/billing"
