@@ -1,100 +1,60 @@
 "use client";
 import clsx from "clsx";
-import { CheckIcon, CrownIcon, GiftIcon } from "lucide-react";
+import { CheckIcon, GiftIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { Plan, plans } from "@/lib/constants";
 
-type Plan = {
-  name: string;
-  spots?: number;
-  price: number;
-  yearlyPrice: number;
-  features: string[];
-  recommended?: boolean;
-  period?: string;
-};
-
-const plans: Plan[] = [
-  {
-    name: "Lifetime Plan",
-    spots: 50,
-    price: 299,
-    yearlyPrice: 299,
-    features: [
-      "Up to 1000 voices",
-      "1,000,000 characters/month",
-      "1000 minutes of audio/month",
-      "Commercial use",
-    ],
-    recommended: true,
-    period: "one-time",
-  },
-  {
-    name: "Basic Plan",
-    price: 9,
-    yearlyPrice: 7.5,
-    features: [
-      "Up to 10 voices",
-      "100,000 characters/month",
-      "10 minutes of audio/month",
-      "Commercial use",
-    ],
-    period: "month",
-  },
-  {
-    name: "Pro Plan",
-    price: 29,
-    yearlyPrice: 24.1,
-    features: [
-      "Up to 100 voices",
-      "1,000,000 characters/month",
-      "100 minutes of audio/month",
-      "Commercial use",
-    ],
-    period: "month",
-  },
-];
-
-export default function Pricing({ className }: { className: string }) {
+export default function Pricing({
+  className,
+  link,
+  showTitle,
+}: {
+  className?: string;
+  link?: string;
+  showTitle?: boolean;
+}) {
   const [yearly, setYearly] = useState<boolean>(true);
 
   return (
     <div className={className} id="pricing">
-      <h2 className="text-2xl md:text-3xl text-primary font-bold text-center">
-        Pricing
-      </h2>
+      {showTitle && (
+        <h2 className="text-2xl md:text-3xl text-primary font-bold text-center">
+          Pricing
+        </h2>
+      )}
       <div className="flex justify-center items-center gap-5 py-5">
-        <button
-          className={clsx("border-2 px-4 py-2 rounded-md font-semibold", {
-            "bg-primary border-primary text-primary-foreground": !yearly,
-          })}
-          onClick={() => setYearly(false)}
-        >
-          Monthly
-        </button>
-        <button
-          className={clsx("border-2 px-4 py-2 rounded-md font-semibold", {
-            "bg-primary border-primary text-primary-foreground": yearly,
-          })}
-          onClick={() => setYearly(true)}
-        >
-          Yearly
-        </button>
-      </div>
-      <div className="flex justify-center py-2">
-        <div className="text-center text-gray-800 px-4 py-2 bg-green-300 rounded-full font-bold animate-bounce text-sm">
-          Two months FREE with yearly billing!
+        <div className="flex gap-2 bg-gray-100 rounded-full p-2">
+          <button
+            className={clsx("p-1 rounded-full font-semibold", {
+              "bg-primary border-primary text-primary-foreground": !yearly,
+            })}
+            onClick={() => setYearly(false)}
+          >
+            Monthly
+          </button>
+          <button
+            className={clsx("p-1 rounded-full font-semibold", {
+              "bg-primary border-primary text-primary-foreground": yearly,
+            })}
+            onClick={() => setYearly(true)}
+          >
+            Yearly{" "}
+            <span className={clsx("text-green-600", { "text-white": yearly })}>
+              (2 months free)
+            </span>
+          </button>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10 py-10">
-        {plans.map((plan, i) => (
+        {plans.map((plan: Plan, i) => (
           <div
             key={i}
             className={clsx(
               "border-2 px-5 py-10 rounded-md relative flex flex-col gap-4",
               {
                 "border-red-600": plan.recommended,
-              },
+              }
             )}
           >
             <div className="flex-1">
@@ -144,7 +104,7 @@ export default function Pricing({ className }: { className: string }) {
             </div>
             <div className="pt-5">
               <Link
-                href="/"
+                href={link ? link : yearly ? plan.yearlyLink : plan.link}
                 className="border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white duration-300 transition-all px-4 py-3 rounded-md block text-center"
               >
                 Get {plan.name}

@@ -14,7 +14,7 @@ export default function Home() {
         </div>
         <Hero className="pt-20 pb-32" />
         <Examples />
-        <Pricing className="py-16 lg:py-32" />
+        <Pricing className="py-16 lg:py-32" link="/app/billing" />
         <div className="py-16 lg:py-32">
           <CTA />
         </div>
