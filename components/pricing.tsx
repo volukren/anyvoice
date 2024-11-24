@@ -24,7 +24,7 @@ export default function Pricing({
         </h2>
       )}
       <div className="flex justify-center items-center gap-5 py-5">
-        <div className="flex gap-2 bg-gray-100 rounded-full p-2">
+        <div className="flex gap-2 bg-red-50 rounded-full p-2">
           <button
             className={clsx("p-1 rounded-full font-semibold", {
               "bg-primary border-primary text-primary-foreground": !yearly,
