@@ -31,7 +31,10 @@ export default async function RootLayout({
         className={`${inter.className} antialiased text-sm text-foreground`}
       >
         <Providers session={session}>
-          <PlausibleProvider domain="anyvoice.app">
+          <PlausibleProvider
+            domain="anyvoice.app"
+            customDomain="https://analytics.anyvoice.app"
+          >
             {children}
           </PlausibleProvider>
         </Providers>
