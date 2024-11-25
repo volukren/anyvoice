@@ -18,14 +18,14 @@ model User {
   image         String?   @map("image")
   role          String    @default("user") @map("role")
 
-  plan           String?   @map("plan")
+  plan           String    @default("free") @map("plan")
   customerId     String?   @unique @map("customer_id") // Stripe customer id
   subscriptionId String?   @unique @map("subscription_id") // Stripe subscription id
   startsAt       DateTime? @map("starts_at") // Stripe subscription start date
   endsAt         DateTime? @map("ends_at") // Stripe subscription end date
 
-  characters Int @default(0) @map("characters")
-  voices     Int @default(0) @map("voices")
+  characters Int @default(1000) @map("characters")
+  voices     Int @default(3) @map("voices")
 
   samples  SampleAudio[]
   accounts Account[]

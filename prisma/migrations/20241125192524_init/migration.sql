@@ -8,13 +8,13 @@ CREATE TABLE "users" (
     "email_verified" DATETIME,
     "image" TEXT,
     "role" TEXT NOT NULL DEFAULT 'user',
-    "plan" TEXT,
+    "plan" TEXT NOT NULL DEFAULT 'free',
     "customer_id" TEXT,
     "subscription_id" TEXT,
     "starts_at" DATETIME,
     "ends_at" DATETIME,
-    "characters" INTEGER NOT NULL DEFAULT 0,
-    "voices" INTEGER NOT NULL DEFAULT 0
+    "characters" INTEGER NOT NULL DEFAULT 1000,
+    "voices" INTEGER NOT NULL DEFAULT 3
 );
 
 -- CreateTable

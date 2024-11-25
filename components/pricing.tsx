@@ -18,9 +18,12 @@ export default function Pricing({
   const [yearly, setYearly] = useState<boolean>(true);
   const { data: session, status } = useSession();
 
-  function getPlanLink(plan: Plan) {
+  function getPlanLink(plan: Plan): string {
     if (link) {
       return link;
+    }
+    if (plan.slug === "free") {
+      return "";
     }
     const clientReferenceId = session?.user?.id!;
     const url = new URL(yearly ? plan.yearlyLink : plan.link);
@@ -62,7 +65,7 @@ export default function Pricing({
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 py-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 py-10">
         {plans.map((plan: Plan, i) => (
           <div
             key={i}

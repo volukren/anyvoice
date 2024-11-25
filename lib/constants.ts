@@ -15,6 +15,24 @@ export type Plan = {
 
 export const plans: Plan[] = [
   {
+    name: "Free Plan",
+    slug: "free",
+    link: "/app",
+    yearlyLink: "/app",
+    price: 0,
+    yearlyPrice: 0,
+    features: [
+      "Up to 3 voices",
+      "1,000 characters/month",
+      "Non-commercial use",
+    ],
+    recommended: false,
+    period: "month",
+    priceIds: new Set(),
+    characters: 1_000,
+    voices: 3,
+  },
+  {
     name: "Pro Plan",
     slug: "pro",
     link:

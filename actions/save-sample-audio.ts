@@ -49,9 +49,7 @@ export async function saveSampleAudio(
       console.log("user.voices", user.voices);
       return {
         success: false,
-        message: user.plan
-          ? "You have reached the limit of sample audios for your plan"
-          : "To upload a sample audio, you need to subscribe to a plan",
+        message: "You have reached the limit of sample audios for your plan",
       };
     }
 
