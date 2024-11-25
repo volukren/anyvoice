@@ -8,10 +8,10 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} AnyVoice. All rights reserved.
         </div>
         <div className="flex justify-end items-center gap-4">
-          <Link href="/privacy" className="underline">
+          <Link href="/privacy-policy" className="underline">
             Privacy Policy
           </Link>
-          <Link href="/terms" className="underline">
+          <Link href="/tos" className="underline">
             Terms of Service
           </Link>
         </div>
