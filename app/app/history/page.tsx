@@ -9,10 +9,12 @@ export default async function HistoryPage() {
       <h1 className="text-2xl font-bold text-primary">History</h1>
       <div className="my-2 p-5 bg-white rounded-md">
         <table className="w-full border">
-          <thead className="text-left text-lg bg-gray-50 border-b">
+          <thead className="text-left text-sm md:text-lg bg-gray-50 border-b">
             <tr>
               <th className="p-2 border-r">Date</th>
-              <th className="p-2 border-r">Sample Audio</th>
+              <th className="p-2 border-r hidden md:table-cell">
+                Sample Audio
+              </th>
               <th className="p-2">Characters Used</th>
             </tr>
           </thead>
@@ -22,7 +24,7 @@ export default async function HistoryPage() {
                 <td className="p-2 border-r">
                   {dayjs(request.createdAt).format("MMM D, YYYY HH:mm:ss")}
                 </td>
-                <td className="p-2 border-r">
+                <td className="p-2 border-r hidden md:table-cell">
                   <Link
                     href={`/app/sample/${request.sampleAudioId}`}
                     className="text-blue-600 hover:underline"

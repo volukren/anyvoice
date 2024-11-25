@@ -81,7 +81,7 @@ export default function PrivateHeader() {
         </button>
       </div>
       {isOpen && (
-        <div className="md:hidden absolute top-[110%] left-0 w-full bg-gray-50 backdrop-blur-sm">
+        <div className="md:hidden absolute top-[110%] z-50 shadow-md border rounded-md right-0 w-full bg-white backdrop-blur-sm">
           <div className="flex flex-col h-full">
             {links.map((link) => (
               <Link

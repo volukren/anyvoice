@@ -2,12 +2,12 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="border-t py-5">
-      <div className="max-w-5xl mx-auto flex justify-between items-center">
-        <div className="text-sm text-center">
+    <div className="border-t p-5">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-start md:justify-between md:items-center">
+        <div className="text-sm text-left md:text-center">
           &copy; {new Date().getFullYear()} AnyVoice. All rights reserved.
         </div>
-        <div className="flex justify-end items-center gap-4">
+        <div className="flex flex-col md:flex-row pt-4 md:pt-0 md:justify-end md:items-center gap-4">
           <Link href="/privacy-policy" className="underline">
             Privacy Policy
           </Link>
