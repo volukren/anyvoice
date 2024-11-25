@@ -30,7 +30,7 @@ export default function Hero({ className }: { className?: string }) {
         </div>
       </div>
       <div className="hidden md:flex md:justify-end">
-        <Image src="/voices.png" alt="" width={400} height={400} />
+        <Image src="/voices.png" alt="Hero image" width={400} height={400} />
       </div>
     </div>
   );
