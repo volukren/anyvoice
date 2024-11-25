@@ -12,12 +12,12 @@ export async function customerSessionDeleted(event: Stripe.Event) {
       subscriptionId,
     },
     data: {
-      plan: null,
+      plan: "free",
       subscriptionId: null,
       endsAt: null,
       startsAt: null,
-      characters: 0,
-      voices: 0,
+      characters: 1_000,
+      voices: 3,
     },
   });
 
