@@ -2,10 +2,23 @@ export const metadata = {
   title: `Terms and Conditions | AnyVoice`,
 };
 
+// I need your help to write a simple Terms & Services for my website. Here is some context:
+//   - Website: https://anyvoice.app
+//   - Name: AnyVoice
+// - Contact information: hi@anyvoice.app
+// - Description: AI Voice cloning tool
+// - User data collected: email address and payment information
+// - Non-personal data collection: web cookies
+// - Link to privacy policy: https://anyvoice.app/privacy-policy
+//   - Governing law: Singapore
+// - Updates to the Terms: users will be updated by email
+//
+// Please write a simple Terms & Services for my site. Add the current date. Do not add or explain your reasoning. Answer:
+
 export default async function TOSPage() {
   return (
-    <div className="max-w-3xl mx-auto">
-      <h1 className="title">Terms and Conditions for OnlyFewDollars</h1>
+    <div className="max-w-3xl mx-auto my-10">
+      <h1 className="title">Terms and Conditions</h1>
       <pre
         className="leading-relaxed whitespace-pre-wrap"
         style={{ fontFamily: "sans-serif" }}

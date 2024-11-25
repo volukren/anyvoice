@@ -1,10 +1,24 @@
 export const metadata = {
-  title: `Privacy Policy | ${process.env.NEXT_PUBLIC_APP_NAME}`,
+  title: `Privacy Policy | AnyVoice`,
 };
+
+// I need your help to write a simple privacy policy for my website. Here is some context:
+//   - Website: https://anyvoice.app
+//   - Name: AnyVoice
+// - Description: AI voice cloning tool
+// - User data collected: Email and payment information
+// - Non-personal data collected: web cookies
+// - Purpose of data collection: Order processing
+// - Data sharing: No data is shared with third parties
+// - Children's privacy: we do not collect any data from children
+// - Updates to the Privacy Policy: users will be updated by email
+// - Contact information: hi@anyvoice.app
+//
+// Please write a simple privacy policy for my site. Add the current date. Do not add or explain your reasoning. Answer:
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="max-w-3xl mx-auto my-10 ">
+    <div className="max-w-3xl mx-auto my-10">
       <h1 className="text-xl font-bold">Privacy Policy</h1>
       <pre
         className="leading-relaxed whitespace-pre-wrap"
