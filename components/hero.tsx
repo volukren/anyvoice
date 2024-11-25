@@ -7,17 +7,16 @@ export default function Hero({ className }: { className?: string }) {
     <div
       className={clsx(
         "max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2",
-        className,
+        className
       )}
     >
       <div className="flex flex-col justify-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-center md:text-left">
-          The best AI in voice cloning
+          Free AI voice cloning tool
         </h1>
         <div className="py-3 max-w-xl mx-auto text-center md:text-left">
           <p className="tracking-wide text-xl">
-            Clone any voice in seconds from an audio sample and use it to speak
-            any text
+            Turn any audio sample into a voice that can say whatever you want
           </p>
         </div>
         <div className="py-10 flex justify-center md:justify-start">
