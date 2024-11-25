@@ -1,3 +1,5 @@
+import { Head } from "@react-email/components";
+
 export const metadata = {
   title: `Terms and Conditions | AnyVoice`,
 };
@@ -18,6 +20,9 @@ export const metadata = {
 export default async function TOSPage() {
   return (
     <div className="max-w-3xl mx-auto my-10">
+      <Head>
+        <link rel="canonical" href="https://anyvoice.app/tos" key="canonical" />
+      </Head>
       <h1 className="title">Terms and Conditions</h1>
       <pre
         className="leading-relaxed whitespace-pre-wrap"

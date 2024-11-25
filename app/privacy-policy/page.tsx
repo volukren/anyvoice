@@ -1,3 +1,5 @@
+import { Head } from "@react-email/components";
+
 export const metadata = {
   title: `Privacy Policy | AnyVoice`,
 };
@@ -19,6 +21,13 @@ export const metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <div className="max-w-3xl mx-auto my-10">
+      <Head>
+        <link
+          rel="canonical"
+          href="https://anyvoice.app/privacy-policy"
+          key="canonical"
+        />
+      </Head>
       <h1 className="text-xl font-bold">Privacy Policy</h1>
       <pre
         className="leading-relaxed whitespace-pre-wrap"

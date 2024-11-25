@@ -1,4 +1,5 @@
 import GoogleButton from "@/components/google-button";
+import { Head } from "@react-email/components";
 
 export default function SignInPage({
   searchParams,
@@ -9,6 +10,13 @@ export default function SignInPage({
 
   return (
     <>
+      <Head>
+        <link
+          rel="canonical"
+          href="https://anyvoice.app/auth/signin"
+          key="canonical"
+        />
+      </Head>
       {error && (
         <div className="text-red-600 py-2 text-lg tracking-wide text-center">
           Something went wrong. Please, try again later

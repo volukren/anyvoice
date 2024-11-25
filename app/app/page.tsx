@@ -1,14 +1,16 @@
 import { getSamples } from "@/actions/get-samples";
 import SampleCard from "@/components/sample-card";
-import clsx from "clsx";
-import dayjs from "dayjs";
 import Link from "next/link";
+import { Head } from "@react-email/components";
 
 export default async function MyVoicesPage() {
   const samples = await getSamples();
 
   return (
     <>
+      <Head>
+        <link rel="canonical" href="https://anyvoice.app" key="canonical" />
+      </Head>
       <div className="flex justify-between">
         <h1 className="text-2xl font-bold text-primary">My Voices</h1>
         <Link
