@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MenuIcon, XIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import Image from "next/image";
 
 const links = [
   {
@@ -37,8 +38,12 @@ export default function PrivateHeader() {
 
   return (
     <div className="flex justify-between items-center relative">
-      <Link href="/app" className="font-bold text-xl lg:text-2xl">
-        AnyVoice
+      <Link
+        href="/app"
+        className="font-bold text-xl lg:text-2xl flex gap-1 items-center"
+      >
+        <Image src="/logo.png" alt="AnyVoice" width={32} height={32} />
+        <span>AnyVoice</span>
       </Link>
       <div className="md:flex md:gap-4 md:items-center hidden">
         <div className="hidden md:flex md:items-center md:gap-1">

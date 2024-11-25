@@ -2,14 +2,19 @@
 
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 export default function Header() {
   const { status } = useSession();
 
   return (
     <div className="flex justify-between items-center">
-      <Link href="/" className="font-bold text-xl lg:text-2xl">
-        AnyVoice
+      <Link
+        href="/"
+        className="font-bold text-xl lg:text-2xl flex gap-1 items-center"
+      >
+        <Image src="/logo.png" alt="Logo" width={32} height={32} />
+        <span>AnyVoice</span>
       </Link>
       <div className="flex gap-4 items-center">
         <div className="hidden md:flex md:items-center md:gap-2">
