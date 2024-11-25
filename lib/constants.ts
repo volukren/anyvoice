@@ -21,11 +21,7 @@ export const plans: Plan[] = [
     yearlyLink: "/app",
     price: 0,
     yearlyPrice: 0,
-    features: [
-      "Up to 3 voices",
-      "1,000 characters/month",
-      "Non-commercial use",
-    ],
+    features: ["Up to 3 voices", "1,000 characters", "Non-commercial use"],
     recommended: false,
     period: "month",
     priceIds: new Set(),

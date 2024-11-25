@@ -31,7 +31,7 @@ export default async function SettingsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-lg py-2">
             <div className="font-semibold">Subscription</div>
             <div className="flex flex-col gap-1">
-              <span>{user?.plan || "No plan"}</span>
+              <span>{user?.plan}</span>
               <span className="text-sm grid text-gray-700">
                 <span>Characters left: {user?.characters}</span>
                 <span>Sample voices left: {user?.voices}</span>

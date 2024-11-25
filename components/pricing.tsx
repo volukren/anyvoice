@@ -84,9 +84,11 @@ export default function Pricing({
               )}
               <h3 className="text-2xl font-bold text-primary">{plan.name}</h3>
               <div className="py-4 flex flex-col gap-2 text-left">
-                <h4 className="text-xl font-bold line-through text-gray-500">
-                  ${yearly ? plan.yearlyPrice * 2 : plan.price * 2}
-                </h4>
+                {plan.slug !== "free" && (
+                  <h4 className="text-xl font-bold line-through text-gray-500">
+                    ${yearly ? plan.yearlyPrice * 2 : plan.price * 2}
+                  </h4>
+                )}
                 <div className="flex items-center gap-2">
                   <h4 className="text-3xl font-bold">
                     ${yearly ? plan.yearlyPrice : plan.price}
@@ -100,7 +102,11 @@ export default function Pricing({
                     Pay once, use forever
                   </span>
                 )}
-                <div className="font-bold text-lg text-green-600">50% OFF</div>
+                {plan.slug !== "free" && (
+                  <div className="font-bold text-lg text-green-600">
+                    50% OFF
+                  </div>
+                )}
               </div>
               <div className="grid gap-1">
                 {plan.features.map((feature, i) => (
@@ -113,21 +119,33 @@ export default function Pricing({
                 ))}
               </div>
             </div>
-            <div className="pt-5">
-              <Link
-                onClick={(event) => {
-                  if (status !== "authenticated") {
-                    event.preventDefault();
-                  }
-                }}
-                href={getPlanLink(plan)}
-                rel={!link ? "noopener noreferrer" : ""}
-                target={!link ? "_blank" : "_self"}
-                className="border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white duration-300 transition-all px-4 py-3 rounded-md block text-center"
-              >
-                Get {plan.name}
-              </Link>
-            </div>
+            {plan.slug === "free" && (
+              <div className="pt-5">
+                <Link
+                  href="/app"
+                  className="border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white duration-300 transition-all px-4 py-3 rounded-md block text-center"
+                >
+                  Get Started
+                </Link>
+              </div>
+            )}
+            {plan.slug !== "free" && (
+              <div className="pt-5">
+                <Link
+                  onClick={(event) => {
+                    if (status !== "authenticated") {
+                      event.preventDefault();
+                    }
+                  }}
+                  href={getPlanLink(plan)}
+                  rel={!link ? "noopener noreferrer" : ""}
+                  target={!link ? "_blank" : "_self"}
+                  className="border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white duration-300 transition-all px-4 py-3 rounded-md block text-center"
+                >
+                  Get {plan.name}
+                </Link>
+              </div>
+            )}
           </div>
         ))}
       </div>
