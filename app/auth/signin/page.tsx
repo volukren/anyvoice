@@ -1,6 +1,10 @@
 import GoogleButton from "@/components/google-button";
 import { Head } from "@react-email/components";
 
+export const metadata = {
+  title: `Sign in | AnyVoice`,
+};
+
 export default function SignInPage({
   searchParams,
 }: {

@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: `AnyVoice: AI-powered voice cloning, turning your text into any voice you want`,
+  title: `AnyVoice: AI voice cloning, turning your text into any voice`,
   description:
     "High-quality AI voice cloning in seconds. Upload an audio sample and create a custom voice instantly",
 };
