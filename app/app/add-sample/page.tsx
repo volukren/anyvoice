@@ -1,6 +1,6 @@
 import AddVoiceForm from "@/components/add-voice-form";
 
-export default function AddSamplePage() {
+export default async function AddSamplePage() {
   return (
     <>
       <h1 className="text-2xl font-bold text-primary">New voice</h1>

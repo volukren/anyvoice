@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import { prisma } from "@/lib/prisma";
 import { log } from "@/lib/utils";
 
-export async function checkoutSessionDeleted(event: Stripe.Event) {
+export async function customerSessionDeleted(event: Stripe.Event) {
   const subscriptionDeleted = event.data.object as Stripe.Subscription;
 
   const subscriptionId = subscriptionDeleted.id;

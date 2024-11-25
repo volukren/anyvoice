@@ -24,8 +24,8 @@ model User {
   startsAt       DateTime? @map("starts_at") // Stripe subscription start date
   endsAt         DateTime? @map("ends_at") // Stripe subscription end date
 
-  characters Int? @default(0) @map("characters")
-  voices     Int? @default(0) @map("voices")
+  characters Int @default(0) @map("characters")
+  voices     Int @default(0) @map("voices")
 
   samples  SampleAudio[]
   accounts Account[]

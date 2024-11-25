@@ -9,16 +9,41 @@ import { v4 as uuidv4 } from "uuid";
 import { uploadFileToBucket } from "@/lib/files/upload-to-bucket";
 import { revalidatePath } from "next/cache";
 
+type TextToSpeechResponse = {
+  success: boolean;
+  message?: string;
+  url?: string;
+};
+
 export async function textToSpeech(
   voiceId: number,
-  text: string
-): Promise<{ success: boolean; message?: string; url?: string }> {
+  text: string,
+): Promise<TextToSpeechResponse> {
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
       return {
         success: false,
         message: "Forbidden",
+      };
+    }
+
+    const user = await prisma.user.findUnique({
+      where: {
+        id: session.user.id,
+      },
+    });
+    if (!user) {
+      return {
+        success: false,
+        message: "Forbidden",
+      };
+    }
+
+    if (user.characters < text.length) {
+      return {
+        success: false,
+        message: "You have exceeded the character limit of your plan",
       };
     }
 
@@ -55,7 +80,7 @@ export async function textToSpeech(
           language: "en",
           cleanup_voice: false,
         },
-      }
+      },
     );
 
     const resultKey = `users/${session.user.email}/results/${uuidv4()}.wav`;
@@ -65,13 +90,25 @@ export async function textToSpeech(
 
     const resultUrl = await getFileUrl(resultKey);
 
-    const savedRequest = await prisma.request.create({
-      data: {
-        sampleAudioId: voiceId,
-        text,
-        characterCount: text.length,
-      },
-    });
+    const [savedRequest] = await prisma.$transaction([
+      prisma.request.create({
+        data: {
+          sampleAudioId: voiceId,
+          text,
+          characterCount: text.length,
+        },
+      }),
+      prisma.user.update({
+        where: {
+          id: session.user.id,
+        },
+        data: {
+          characters: {
+            decrement: text.length,
+          },
+        },
+      }),
+    ]);
 
     revalidatePath("/app/history");
 

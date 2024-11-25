@@ -51,7 +51,11 @@ export default function AudioUploader({
         const presignedResponse = await getPresignedUrl(currentFile.type);
         if (!presignedResponse.success) {
           setFile(null);
-          setError("Something went wrong! Please try again");
+          setError(
+            presignedResponse.message
+              ? presignedResponse.message
+              : "Something went wrong! Please try again",
+          );
           return;
         }
 

@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripeInstance } from "@/lib/stripe";
 import Stripe from "stripe";
-import { checkoutSessionCompleted } from "@/app/api/stripe/webhook/checkout-session-completed";
 import { log } from "@/lib/utils";
-import { checkoutSessionDeleted } from "@/app/api/stripe/webhook/checkout-session-deleted";
+import { checkoutSessionCompleted } from "@/app/api/stripe/webhook/checkout-session-completed";
+import { customerSessionDeleted } from "@/app/api/stripe/webhook/customer-session-deleted";
+import { customerSubscriptionUpdated } from "@/app/api/stripe/webhook/customer-subscription-updated";
 
 const relevantEvents = new Set([
   "checkout.session.completed",
@@ -38,7 +39,10 @@ export async function POST(req: NextRequest) {
         await checkoutSessionCompleted(event);
         break;
       case "customer.subscription.deleted":
-        await checkoutSessionDeleted(event);
+        await customerSessionDeleted(event);
+        break;
+      case "customer.subscription.updated":
+        await customerSubscriptionUpdated(event);
         break;
     }
   } catch (error) {

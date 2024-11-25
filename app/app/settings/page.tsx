@@ -29,15 +29,21 @@ export default async function SettingsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-lg py-2">
-            <div className="font-semibold">Subscription Plan</div>
-            <div className="flex">{user?.plan || "No plan"}</div>
-            <div className="flex md:justify-end">
-              <Link
-                href="/app/billing"
-                className="text-primary border-2 border-primary p-2 rounded-md transition-colors duration-300 hover:bg-primary hover:text-primary-foreground"
-              >
-                Manage
-              </Link>
+            <div className="font-semibold">Subscription</div>
+            <div className="flex flex-col gap-1">
+              <span>{user?.plan || "No plan"}</span>
+              <span className="text-sm grid text-gray-700">
+                <span>Characters left: {user?.characters}</span>
+                <span>Sample voices left: {user?.voices}</span>
+                <div className="flex pt-2">
+                  <Link
+                    href="/app/billing"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground py-0.5 px-1 rounded-md"
+                  >
+                    Upgrade
+                  </Link>
+                </div>
+              </span>
             </div>
           </div>
         </div>
