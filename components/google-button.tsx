@@ -9,7 +9,7 @@ export default function GoogleButton() {
 
   return (
     <button
-      onClick={() => signIn("google", { callbackUrl })}
+      onClick={() => signIn("google", { callbackUrl, redirect: true })}
       className="w-full border hover:border-gray-300 text-black rounded-md p-2 flex items-center justify-center gap-2"
     >
       <svg
