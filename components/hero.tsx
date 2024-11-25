@@ -1,13 +1,14 @@
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
+import SupportedLanguages from "./supported-langs";
 
 export default function Hero({ className }: { className?: string }) {
   return (
     <div
       className={clsx(
         "max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2",
-        className,
+        className
       )}
     >
       <div className="flex flex-col justify-center">
@@ -19,6 +20,7 @@ export default function Hero({ className }: { className?: string }) {
             Turn any audio sample into a voice that can say whatever you want
           </p>
         </div>
+        <SupportedLanguages />
         <div className="py-5 flex justify-center md:justify-start">
           <div className="grid gap-2">
             <Link
