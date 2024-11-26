@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { Inter } from "next/font/google";
+import { Signika } from "next/font/google";
 import Providers from "@/app/providers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/options";
-import Script from "next/script";
 import PlausibleProvider from "next-plausible";
 
-const inter = Inter({
-  weight: ["400", "500", "600", "700", "800", "900"],
+const signika = Signika({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -28,7 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased text-sm text-foreground`}
+        className={`${signika.className} antialiased text-sm text-foreground`}
       >
         <Providers session={session}>
           <PlausibleProvider

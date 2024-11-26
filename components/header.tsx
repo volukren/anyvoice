@@ -3,28 +3,36 @@
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import clsx from "clsx";
 
-export default function Header() {
+export default function Header({ className }: { className?: string }) {
   const { status } = useSession();
 
   return (
-    <div className="flex justify-between items-center">
-      <Link
-        href="/"
-        className="font-bold text-xl lg:text-2xl flex gap-1 items-center"
-      >
-        <Image src="/logo.png" alt="Logo" width={32} height={32} />
-        <span>AnyVoice</span>
-      </Link>
+    <div className={clsx("flex justify-between items-center", className)}>
+      <div className="flex items-center gap-2">
+        <Link
+          href="/"
+          className="font-bold text-xl lg:text-2xl flex gap-1 items-center"
+        >
+          <Image src="/logo.png" alt="Logo" width={32} height={32} />
+          <span>AnyVoice</span>
+        </Link>
+        <Link
+          href="/#pricing"
+          className="font-semibold hidden md:block ml-3 py-1 px-2 rounded-md hover:bg-primary/5 hover:text-primary"
+        >
+          Pricing
+        </Link>
+        <Link
+          href="/voices"
+          className="font-semibold hidden md:block py-1 px-2 rounded-md hover:bg-primary/5 hover:text-primary"
+        >
+          Examples
+        </Link>
+      </div>
       <div className="flex gap-4 items-center">
-        <div className="hidden md:flex md:items-center md:gap-2">
-          <Link
-            href="/#pricing"
-            className="font-semibold py-2 px-3 rounded-md hover:bg-primary/5 hover:text-primary"
-          >
-            Pricing
-          </Link>
-        </div>
+        <div className="hidden md:flex md:items-center md:gap-2"></div>
         {status !== "authenticated" && (
           <div className="flex gap-2 items-center">
             <Link
