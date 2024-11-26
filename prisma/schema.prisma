@@ -94,25 +94,3 @@ model Request {
 
   @@map("requests")
 }
-
-model Example {
-  id Int @id @default(autoincrement()) @map("id")
-
-  name  String @map("name")
-  photo String @map("photo")
-
-  items ExampleItem[]
-
-  @@map("examples")
-}
-
-model ExampleItem {
-  id Int @id @default(autoincrement()) @map("id")
-
-  exampleId Int     @map("example_id")
-  example   Example @relation(fields: [exampleId], references: [id], onDelete: Cascade)
-
-  audioFile String @map("audio_file")
-
-  @@map("example_items")
-}
