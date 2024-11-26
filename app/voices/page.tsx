@@ -49,7 +49,7 @@ export default function VoicesPage() {
                       width={80}
                       height={80}
                     />
-                    <p className="text-gray-800 text-sm font-extrabold">
+                    <p className="text-gray-800 text-sm font-extrabold text-center">
                       {example.name}
                     </p>
                   </Link>
