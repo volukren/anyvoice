@@ -6,7 +6,7 @@ import { examples } from "@/lib/examples";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Generated Voice Examples - AnyVoice",
+  title: "Explore voices created by our AI - AnyVoice",
   alternates: {
     canonical: "https://anyvoice.app/voices",
   },
@@ -22,7 +22,8 @@ export default function VoicesPage() {
         <div className="max-w-5xl mx-auto py-10 lg:py-20 px-4">
           <div className="text-center max-w-xl mx-auto">
             <h1 className="font-bold tracking-tight text-4xl xl:text-5xl text-black">
-              Explore voices created by our AI
+              Explore voices
+              <br /> created by our AI
             </h1>
             <p className="mt-5 text-lg text-gray-800 lg:text-xl text-black/70">
               See what you can create using AnyVoice
