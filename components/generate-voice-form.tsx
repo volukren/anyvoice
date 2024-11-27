@@ -87,7 +87,6 @@ export default function GenerateVoiceForm({ voiceId }: GenerateVoiceFormProps) {
           </audio>
           <Link
             href={url}
-            download="speech.wav"
             className="text-primary border-2 border-primary text-center font-bold p-2 rounded-md w-full hover:bg-primary hover:text-primary-foreground transition-colors"
           >
             Download wav audio

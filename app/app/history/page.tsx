@@ -1,6 +1,7 @@
 import { getRequests } from "@/actions/get-requests";
 import dayjs from "dayjs";
 import Link from "next/link";
+
 export default async function HistoryPage() {
   const requests = await getRequests();
 

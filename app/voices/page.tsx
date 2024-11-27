@@ -34,9 +34,7 @@ export default function VoicesPage() {
                 <Link
                   key={i}
                   href={`/voices/${example.slug}`}
-                  className={`flex flex-col gap-2 items-center p-3 rounded-md hover:${
-                    Math.random() < 0.5 ? "-" : ""
-                  }rotate-12 transform transition-transform duration-300`}
+                  className={`flex flex-col gap-2 items-center p-3 rounded-md hover:rotate-12 transform transition-transform duration-300`}
                 >
                   <Image
                     src={example.image}

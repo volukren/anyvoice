@@ -8,6 +8,9 @@ import { getServerSession } from "next-auth";
 import { v4 as uuidv4 } from "uuid";
 import { uploadFileToBucket } from "@/lib/files/upload-to-bucket";
 import { revalidatePath } from "next/cache";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { s3Client } from "@/lib/s3";
+import { GetObjectCommand } from "@aws-sdk/client-s3";
 
 type TextToSpeechResponse = {
   success: boolean;
@@ -17,7 +20,7 @@ type TextToSpeechResponse = {
 
 export async function textToSpeech(
   voiceId: number,
-  text: string,
+  text: string
 ): Promise<TextToSpeechResponse> {
   try {
     const session = await getServerSession(authOptions);
@@ -80,7 +83,7 @@ export async function textToSpeech(
           language: "en",
           cleanup_voice: false,
         },
-      },
+      }
     );
 
     const resultKey = `users/${session.user.email}/results/${uuidv4()}.wav`;
@@ -88,7 +91,16 @@ export async function textToSpeech(
     // @ts-ignore
     await uploadFileToBucket(output, resultKey);
 
-    const resultUrl = await getFileUrl(resultKey);
+    const resultUrl = await getSignedUrl(
+      s3Client,
+      new GetObjectCommand({
+        Bucket: process.env.CLOUDFLARE_BUCKET_NAME!,
+        Key: resultKey,
+        ResponseContentType: "audio/wav",
+        ResponseContentDisposition: `attachment; filename="result.wav"`,
+      }),
+      { expiresIn: 3600 }
+    );
 
     const [savedRequest] = await prisma.$transaction([
       prisma.request.create({
