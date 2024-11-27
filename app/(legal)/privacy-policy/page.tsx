@@ -1,8 +1,4 @@
-import { Head } from "@react-email/components";
-
-export const metadata = {
-  title: `Privacy Policy | AnyVoice`,
-};
+import type { Metadata } from "next";
 
 // I need your help to write a simple privacy policy for my website. Here is some context:
 //   - Website: https://anyvoice.app
@@ -18,16 +14,16 @@ export const metadata = {
 //
 // Please write a simple privacy policy for my site. Add the current date. Do not add or explain your reasoning. Answer:
 
+export const metadata: Metadata = {
+  title: `Privacy Policy - AnyVoice`,
+  alternates: {
+    canonical: "https://anyvoice.app/privacy-policy",
+  },
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="max-w-3xl mx-auto my-10">
-      <Head>
-        <link
-          rel="canonical"
-          href="https://anyvoice.app/privacy-policy"
-          key="canonical"
-        />
-      </Head>
       <h1 className="text-xl font-bold">Privacy Policy</h1>
       <pre
         className="leading-relaxed whitespace-pre-wrap"

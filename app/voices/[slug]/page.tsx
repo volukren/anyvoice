@@ -1,15 +1,15 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { examples } from "@/lib/examples";
-import Head from "next/head";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}) {
+}): Promise<Metadata> {
   const voice = examples.find((voice) => voice.slug === params.slug);
 
   if (!voice) {
@@ -19,7 +19,10 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${voice?.name} AI Voice`,
+    title: `${voice?.name} AI Voice - AnyVoice`,
+    alternates: {
+      canonical: `https://anyvoice.app/voices/${voice.slug}`,
+    },
   };
 }
 
@@ -32,13 +35,6 @@ export default function VoicePage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <Head>
-        <link
-          rel="canonical"
-          href={`https://anyvoice.app/voices/${voice.slug}`}
-          key="canonical"
-        />
-      </Head>
       <div className="flex flex-col h-screen">
         <div className="w-full flex-1">
           <div className="shadow">

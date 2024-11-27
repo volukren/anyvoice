@@ -1,8 +1,4 @@
-import { Head } from "@react-email/components";
-
-export const metadata = {
-  title: `Terms and Conditions | AnyVoice`,
-};
+import type { Metadata } from "next";
 
 // I need your help to write a simple Terms & Services for my website. Here is some context:
 //   - Website: https://anyvoice.app
@@ -17,12 +13,16 @@ export const metadata = {
 //
 // Please write a simple Terms & Services for my site. Add the current date. Do not add or explain your reasoning. Answer:
 
+export const metadata: Metadata = {
+  title: `Terms and Conditions - AnyVoice`,
+  alternates: {
+    canonical: "https://anyvoice.app/tos",
+  },
+};
+
 export default async function TOSPage() {
   return (
     <div className="max-w-3xl mx-auto my-10">
-      <Head>
-        <link rel="canonical" href="https://anyvoice.app/tos" key="canonical" />
-      </Head>
       <h1 className="title">Terms and Conditions</h1>
       <pre
         className="leading-relaxed whitespace-pre-wrap"
