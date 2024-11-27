@@ -2,7 +2,7 @@ import GoogleButton from "@/components/google-button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `Sign in | AnyVoice`,
+  title: `Sign in - AnyVoice`,
   alternates: {
     canonical: "https://anyvoice.app/auth/signin",
   },
