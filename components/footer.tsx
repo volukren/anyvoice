@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="border-t p-5">
+    <div className="border-t p-5 bg-base-300">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-start md:justify-between md:items-center">
         <div className="text-sm text-left md:text-center">
           &copy; {new Date().getFullYear()} AnyVoice. All rights reserved.

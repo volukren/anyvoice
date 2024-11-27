@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Examples() {
   return (
-    <div className="bg-white/90 px-5 py-8 rounded-md">
+    <div className="bg-base-100 px-5 py-8 rounded-md">
       <h2 className="text-2xl md:text-3xl text-primary font-bold text-center">
         Cloned Voice Examples
       </h2>

@@ -21,7 +21,7 @@ export default async function SamplePage({
       <h1 className="text-xl md:text-2xl font-bold text-primary">
         Text-to-Speech with "{sampleFromDB.name}" Voice
       </h1>
-      <div className="bg-white rounded-md p-5 my-2">
+      <div className="bg-base-100 border rounded-md p-5 my-2">
         <GenerateVoiceForm voiceId={sampleFromDB.id} />
       </div>
     </>

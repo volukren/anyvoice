@@ -15,7 +15,7 @@ export default async function SettingsPage() {
   return (
     <>
       <h1 className="text-2xl font-bold text-primary">Settings</h1>
-      <div className="my-2 p-5 bg-white rounded-md">
+      <div className="my-2 p-5 bg-base-100 rounded-md">
         <div className="flex flex-col gap-2">
           <h2 className="text-lg font-bold border-b pb-2">Account</h2>
 

@@ -30,7 +30,7 @@ export default function Pricing({
     url.searchParams.append("prefilled_email", session?.user.email as string);
     url.searchParams.append(
       "client_reference_id",
-      clientReferenceId.toString(),
+      clientReferenceId.toString()
     );
     return url.href;
   }
@@ -70,15 +70,15 @@ export default function Pricing({
           <div
             key={i}
             className={clsx(
-              "border-2 px-5 py-10 rounded-md relative flex flex-col gap-4",
+              "px-5 py-10 rounded-md relative flex flex-col gap-4 bg-base-100",
               {
-                "border-red-600": plan.recommended,
-              },
+                "border-red-600 border-2": plan.recommended,
+              }
             )}
           >
             <div className="flex-1">
               {plan.recommended && (
-                <div className="absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 bg-primary text-white px-2 py-1 rounded-md font-semibold">
+                <div className="absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 bg-primary text-white px-2 py-1 rounded-full">
                   Recommended
                 </div>
               )}
@@ -123,7 +123,7 @@ export default function Pricing({
               <div className="pt-5">
                 <Link
                   href="/app"
-                  className="border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white duration-300 transition-all px-4 py-3 rounded-md block text-center"
+                  className="bg-primary text-primary-foreground font-bold hover:bg-primary/90 px-4 py-3 rounded-md block text-center"
                 >
                   Get Started
                 </Link>
@@ -140,7 +140,7 @@ export default function Pricing({
                   href={getPlanLink(plan)}
                   rel={!link ? "noopener noreferrer" : ""}
                   target={!link ? "_blank" : "_self"}
-                  className="border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white duration-300 transition-all px-4 py-3 rounded-md block text-center"
+                  className="bg-primary text-primary-foreground font-bold hover:bg-primary/90 px-4 py-3 rounded-md block text-center"
                 >
                   Get {plan.name}
                 </Link>

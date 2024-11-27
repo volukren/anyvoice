@@ -16,7 +16,7 @@ export default function SampleCard({ sample }: { sample: SampleCardProps }) {
       href={`/app/sample/${sample.id}`}
       key={sample.id}
       className={clsx(
-        "flex flex-col gap-4 bg-white rounded-md text-center p-3 relative",
+        "flex flex-col gap-4 bg-base-100 border rounded-md text-center p-3 relative"
       )}
     >
       <DeleteSampleButton id={sample.id} />

@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 
 export default function VoicesPage() {
   return (
-    <div className="flex flex-col h-screen w-full">
+    <div className="flex flex-col h-screen w-full bg-base-200">
       <div className="w-full flex-1">
-        <div className="shadow">
+        <div className="bg-base-100">
           <Header className="p-4 max-w-5xl mx-auto" />
         </div>
         <div className="max-w-5xl mx-auto py-10 lg:py-20 px-4">

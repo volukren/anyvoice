@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-full w-full bg-base-200">
       <div className="w-full flex-1">
-        <div className="shadow">
+        <div className="bg-base-100">
           <Header className="p-4 max-w-5xl mx-auto" />
         </div>
         <div className="bg-gradient-to-b from-primary/10 via-primary/5 to-transparent">
@@ -25,7 +25,7 @@ export default function Home() {
           </div>
         </div>
         <div className="max-w-5xl mx-auto px-4">
-          <div className="p-5 bg-gray-100/70 rounded-md">
+          <div className="p-5 bg-base-300 rounded-md">
             <Examples />
           </div>
           <Pricing className="py-16 lg:py-32" link="/app/billing" />
