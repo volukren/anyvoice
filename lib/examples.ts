@@ -50,4 +50,15 @@ export const examples: Example[] = [
       },
     ],
   },
+  {
+    slug: "mr-beast",
+    name: "MrBeast",
+    image: "/examples/mrbeast.png",
+    examples: [
+      {
+        text: "Hi there! This is a sample voice created using AnyVoice",
+        voiceFile: "/examples/mrbeast.wav",
+      },
+    ],
+  },
 ];
