@@ -1,3 +1,4 @@
+import languages from "@/lib/languages";
 import clsx from "clsx";
 
 export default function SupportedLanguages({
@@ -14,19 +15,11 @@ export default function SupportedLanguages({
     >
       <h3>Supported Languages</h3>
       <div className="flex justify-center md:justify-start gap-1">
-        <span className="text-xl">🇺🇸</span>
-        <span className="text-xl">🇫🇷</span>
-        <span className="text-xl">🇩🇪</span>
-        <span className="text-xl">🇪🇸</span>
-        <span className="text-xl">🇮🇹</span>
-        <span className="text-xl">🇵🇹</span>
-        <span className="text-xl">🇨🇿</span>
-        <span className="text-xl">🇵🇱</span>
-        <span className="text-xl">🇷🇺</span>
-        <span className="text-xl">🇳🇱</span>
-        <span className="text-xl">🇹🇷</span>
-        <span className="text-xl">🇦🇪</span>
-        <span className="text-xl">🇨🇳</span>
+        {Array.from(languages).map(([name, { code, flag }]) => (
+          <span key={code} className="text-xl">
+            {flag}
+          </span>
+        ))}
       </div>
     </div>
   );

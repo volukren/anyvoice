@@ -11,6 +11,8 @@ import { revalidatePath } from "next/cache";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { s3Client } from "@/lib/s3";
 import { GetObjectCommand } from "@aws-sdk/client-s3";
+import languages from "@/lib/languages";
+import askAnthropic from "@/lib/anthropic/ask-anthropic";
 
 type TextToSpeechResponse = {
   success: boolean;
@@ -74,13 +76,15 @@ export async function textToSpeech(
 
     const url = await getFileUrl(key);
 
+    const lang = await detectTextLanguage(text);
+
     const output = await replicate.run(
       "lucataco/xtts-v2:684bc3855b37866c0c65add2ff39c78f3dea3f4ff103a436465326e0f438d55e",
       {
         input: {
           text,
           speaker: url,
-          language: "en",
+          language: lang,
           cleanup_voice: false,
         },
       }
@@ -137,4 +141,19 @@ export async function textToSpeech(
       message: "Something went wrong. Please, try again later",
     };
   }
+}
+
+const detectLanguagePrompt = `
+Определи на каком языке написан текст выше и выбери соответствующий язык из списка:
+[${Array.from(languages.keys()).join(", ")}]
+
+В ответе должно быть только значение из списка, без каких-либо других символов.
+`;
+
+async function detectTextLanguage(text: string): Promise<string> {
+  const lang = await askAnthropic(`"${text}"\n\n${detectLanguagePrompt}`);
+  if (languages.has(lang)) {
+    return languages.get(lang)!.code;
+  }
+  return "en";
 }

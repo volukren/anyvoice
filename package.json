@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
     "@aws-sdk/lib-storage": "^3.693.0",
     "@aws-sdk/s3-presigned-post": "^3.693.0",
     "@aws-sdk/s3-request-presigner": "^3.693.0",
