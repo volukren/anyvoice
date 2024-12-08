@@ -9,6 +9,12 @@ export default function Footer() {
           <div className="flex flex-col gap-2 text-left mt-4">
             <a href="https://sprunki-mod.com/">Sprunki Mod</a>
             <a href="https://AIBest.Tools">AI Best Tools</a>
+            <a
+              href="https://aibesttop.com/"
+              title="aibesttop AI Tools Directory"
+            >
+              aibesttop AI Tools Diresctory
+            </a>
           </div>
         </div>
         <div className="flex flex-col md:flex-row pt-4 md:pt-0 md:justify-end md:items-center gap-4">
