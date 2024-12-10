@@ -19,7 +19,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${voice?.name} AI Voice - AnyVoice`,
+    title: `Free ${voice?.name} AI Voice - AnyVoice`,
     alternates: {
       canonical: `https://anyvoice.app/voices/${voice.slug}`,
     },
@@ -48,11 +48,11 @@ export default function VoicePage({ params }: { params: { slug: string } }) {
             className="mx-auto rounded-full"
           />
           <h1 className="max-w-xl mx-auto text-4xl font-extrabold tracking-tight text-center">
-            {voice.name} AI Voice
+            Free {voice.name} AI Voice
           </h1>
           <div className="py-3 max-w-3xl mx-auto text-center">
             <p className="tracking-wide text-lg">
-              Try the best AI tool that turns any text into {voice.name}'s
+              Try the best free AI tool that turns any text into {voice.name}'s
               voice!
             </p>
           </div>
