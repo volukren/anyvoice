@@ -32,7 +32,7 @@ export default async function RootLayout({
         <Providers session={session}>
           <PlausibleProvider
             domain="anyvoice.app"
-            customDomain="https://analytics.anyvoice.app"
+            customDomain="https://plausible.phantombits.dev"
           >
             {children}
           </PlausibleProvider>
