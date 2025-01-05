@@ -9,7 +9,7 @@ export default function Hero({ className }: { className?: string }) {
     <div className={clsx("grid grid-cols-1 md:grid-cols-2", className)}>
       <div className="flex flex-col justify-center">
         <h1 className="text-4xl font-extrabold text-black tracking-tight text-center md:text-left">
-          Free AI voice cloning tool
+          Free AI voice cloning
         </h1>
         <div className="py-3 max-w-xl mx-auto text-center md:text-left">
           <p className="tracking-wide text-xl text-black/80">
