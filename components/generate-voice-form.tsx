@@ -4,6 +4,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import { z } from "zod";
+import FeedbackForm from "@/components/feedback-form";
 
 type GenerateVoiceFormProps = {
   voiceId: number;
@@ -105,6 +106,8 @@ export default function GenerateVoiceForm({ voiceId }: GenerateVoiceFormProps) {
               <ExternalLinkIcon className="w-4 h-4" />
             </Link>
           </div>
+
+          <FeedbackForm />
         </div>
       )}
     </>
