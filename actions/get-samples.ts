@@ -12,7 +12,7 @@ export async function getSamples() {
     }
     return await prisma.sampleAudio.findMany({
       where: {
-        AND: [
+        OR: [
           {
             userId: session.user.id,
           },
