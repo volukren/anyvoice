@@ -74,6 +74,8 @@ model SampleAudio {
   audioFile String @map("audio_file")
   name      String @map("name")
 
+  public Boolean @default(false) @map("public")
+
   requests Request[]
 
   @@map("sample_audios")
