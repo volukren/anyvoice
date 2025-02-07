@@ -4,7 +4,6 @@ import { Signika } from "next/font/google";
 import Providers from "@/app/providers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/options";
-import PlausibleProvider from "next-plausible";
 
 const signika = Signika({
   weight: ["400", "500", "600", "700"],
@@ -29,14 +28,7 @@ export default async function RootLayout({
       <body
         className={`${signika.className} antialiased text-sm text-foreground`}
       >
-        <Providers session={session}>
-          <PlausibleProvider
-            domain="anyvoice.app"
-            customDomain="https://plausible.phantombits.dev"
-          >
-            {children}
-          </PlausibleProvider>
-        </Providers>
+        <Providers session={session}>{children}</Providers>
       </body>
     </html>
   );
