@@ -4,6 +4,7 @@ import { Signika } from "next/font/google";
 import Providers from "@/app/providers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/options";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const signika = Signika({
   weight: ["400", "500", "600", "700"],
@@ -28,7 +29,10 @@ export default async function RootLayout({
       <body
         className={`${signika.className} antialiased text-sm text-foreground`}
       >
-        <Providers session={session}>{children}</Providers>
+        <Providers session={session}>
+          <SpeedInsights />
+          {children}
+        </Providers>
       </body>
     </html>
   );
