@@ -36,7 +36,7 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/auth/signin",
-    newUser: "/app",
+    newUser: "/app/billing",
     verifyRequest: "/auth/verify-request",
     error: "/auth/error",
   },
