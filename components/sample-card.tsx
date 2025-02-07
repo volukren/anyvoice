@@ -17,10 +17,15 @@ export default function SampleCard({ sample }: { sample: SampleCardProps }) {
       href={`/app/sample/${sample.id}`}
       key={sample.id}
       className={clsx(
-        "flex flex-col gap-4 bg-base-100 border rounded-md text-center p-3 relative"
+        "flex flex-col gap-4 bg-base-100 border rounded-md text-center p-3 relative",
       )}
     >
-      {!sample.public &&  <DeleteSampleButton id={sample.id} />}
+      {!sample.public && <DeleteSampleButton id={sample.id} />}
+      {sample.public && (
+        <div className="bg-primary p-1 rounded-md absolute top-1 right-1 text-white">
+          Our Gallery
+        </div>
+      )}
       <span className="font-bold text-lg">{sample.name}</span>
       <span>{dayjs(sample.createdAt).format("MMM D, YYYY")}</span>
     </Link>

@@ -15,29 +15,44 @@ export type Plan = {
 
 export const plans: Plan[] = [
   {
-    name: "Free Plan",
-    slug: "free",
-    link: "/app",
-    yearlyLink: "/app",
-    price: 0,
-    yearlyPrice: 0,
-    features: ["Up to 3 voices", "1,000 characters", "Non-commercial use"],
+    name: "Basic Plan",
+    slug: "basic",
+    link:
+      process.env.NODE_ENV === "development"
+        ? "https://buy.stripe.com/test_bIY9Ci3cc8Pv94QaEG"
+        : "https://buy.stripe.com/bIYg0E3TI52WcXm6os",
+    yearlyLink:
+      process.env.NODE_ENV === "development"
+        ? "https://buy.stripe.com/test_7sI7uafYYe9P6WIeUX"
+        : "https://buy.stripe.com/6oE3dS1LAang8H6dQW",
+    price: 5,
+    yearlyPrice: 4.1,
+    features: ["Up to 5 voices", "50,000 characters", "Commercial use"],
     recommended: false,
     period: "month",
-    priceIds: new Set(),
+    priceIds:
+      process.env.NODE_ENV === "development"
+        ? new Set([
+            "price_1Qpk5DHrs1WjSO3rQjheRk9n",
+            "price_1Qpk5RHrs1WjSO3r598kDeb1",
+          ])
+        : new Set([
+            "price_1QpkMNHrs1WjSO3rKdnxadzA",
+            "price_1Qpk2zHrs1WjSO3rCEWyIwXF",
+          ]),
     characters: 1_000,
     voices: 3,
   },
   {
-    name: "Pro Plan",
-    slug: "pro",
+    name: "Pro+ Plan",
+    slug: "proplus",
     link:
       process.env.NODE_ENV === "development"
-        ? "https://buy.stripe.com/test_dR6045gHR08L7IY000"
+        ? "https://buy.stripe.com/test_eVa3dU2888Pv94QeV0"
         : "https://buy.stripe.com/4gwg0EbmafHAcXm7sv",
     yearlyLink:
       process.env.NODE_ENV === "development"
-        ? "https://buy.stripe.com/test_cN2aIJ8blcVxfbq005"
+        ? "https://buy.stripe.com/test_aEUg0GeUU3vbch24gn"
         : "https://buy.stripe.com/fZe15KgGueDwaPeaEG",
     price: 29,
     yearlyPrice: 24.1,
@@ -51,8 +66,8 @@ export const plans: Plan[] = [
     priceIds:
       process.env.NODE_ENV === "development"
         ? new Set([
-            "price_1QO6gMEKH0t3iQ0bTWbV4MEq",
-            "price_1QO6gMEKH0t3iQ0bPHoBhUZ2",
+            "price_1QpkCnHrs1WjSO3rjnEDU3fe",
+            "price_1QpkEBHrs1WjSO3r94AhLRaR",
           ])
         : new Set([
             "price_1QP0T3Hrs1WjSO3rAOxo3YBc",
@@ -62,15 +77,15 @@ export const plans: Plan[] = [
     voices: 100,
   },
   {
-    name: "Basic Plan",
-    slug: "basic",
+    name: "Pro Plan",
+    slug: "pro",
     link:
       process.env.NODE_ENV === "development"
-        ? "https://buy.stripe.com/test_eVa4klgHR7BdfbqcMQ"
+        ? "https://buy.stripe.com/test_14kaGmbII3vb3KwaEI"
         : "https://buy.stripe.com/9AQcOseym6704qQcMM",
     yearlyLink:
       process.env.NODE_ENV === "development"
-        ? "https://buy.stripe.com/test_dR62cddvF6x91kA4gi"
+        ? "https://buy.stripe.com/test_6oEdSy6oo2r71Co7sx"
         : "https://buy.stripe.com/eVa6q4dui9jc3mM001",
     price: 9,
     yearlyPrice: 7.5,
@@ -80,8 +95,8 @@ export const plans: Plan[] = [
     priceIds:
       process.env.NODE_ENV === "development"
         ? new Set([
-            "price_1QOcQSEKH0t3iQ0bvFrzqBKt",
-            "price_1QO6heEKH0t3iQ0bBygbuHYk",
+            "price_1QpkAnHrs1WjSO3rwnry80MB",
+            "price_1QpkBvHrs1WjSO3rpE9DnMg8",
           ])
         : new Set([
             "price_1QP0WjHrs1WjSO3ruVw2O9kr",
