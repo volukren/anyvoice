@@ -11,18 +11,16 @@ export async function getSampleById(id: number): Promise<SampleAudio | null> {
     if (!session) {
       return null;
     }
-    return await prisma.sampleAudio.findFirst({
-      where: {
-        AND: [
-          {
-            userId: session.user.id,
-          },
-          {
-            id,
-          },
-        ],
-      },
+    const sampleFromDB = await prisma.sampleAudio.findFirst({
+      where: { id },
     });
+    if (!sampleFromDB) {
+      return null;
+    }
+    if (sampleFromDB.userId !== session.user.id && !sampleFromDB.public) {
+      return null;
+    }
+    return sampleFromDB;
   } catch (error) {
     console.error(error);
     return null;
