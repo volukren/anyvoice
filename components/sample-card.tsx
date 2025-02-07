@@ -21,11 +21,6 @@ export default function SampleCard({ sample }: { sample: SampleCardProps }) {
       )}
     >
       {!sample.public && <DeleteSampleButton id={sample.id} />}
-      {sample.public && (
-        <div className="bg-primary p-1 rounded-md absolute top-1 right-1 text-white">
-          Our Gallery
-        </div>
-      )}
       <span className="font-bold text-lg">{sample.name}</span>
       <span>{dayjs(sample.createdAt).format("MMM D, YYYY")}</span>
     </Link>
