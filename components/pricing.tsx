@@ -30,7 +30,7 @@ export default function Pricing({
     url.searchParams.append("prefilled_email", session?.user.email as string);
     url.searchParams.append(
       "client_reference_id",
-      clientReferenceId.toString()
+      clientReferenceId.toString(),
     );
     return url.href;
   }
@@ -73,7 +73,7 @@ export default function Pricing({
               "px-5 py-10 rounded-md relative flex flex-col gap-4 bg-base-100",
               {
                 "border-red-600 border-2": plan.recommended,
-              }
+              },
             )}
           >
             <div className="flex-1">
@@ -132,11 +132,6 @@ export default function Pricing({
             {plan.slug !== "free" && (
               <div className="pt-5">
                 <Link
-                  onClick={(event) => {
-                    if (status !== "authenticated") {
-                      event.preventDefault();
-                    }
-                  }}
                   href={getPlanLink(plan)}
                   rel={!link ? "noopener noreferrer" : ""}
                   target={!link ? "_blank" : "_self"}
