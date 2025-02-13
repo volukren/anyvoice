@@ -4,6 +4,7 @@ import { Signika } from "next/font/google";
 import Providers from "@/app/providers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/options";
+import PlausibleProvider from "next-plausible";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const signika = Signika({
@@ -12,7 +13,7 @@ const signika = Signika({
 });
 
 export const metadata: Metadata = {
-  title: `Free AI voice cloning tool - AnyVoice`,
+  title: `AI voice cloning tool - AnyVoice`,
   description:
     "High-quality AI voice cloning in seconds. Upload an audio sample and create a custom voice instantly",
 };
@@ -30,8 +31,13 @@ export default async function RootLayout({
         className={`${signika.className} antialiased text-sm text-foreground`}
       >
         <Providers session={session}>
-          <SpeedInsights />
-          {children}
+          <PlausibleProvider
+            domain="anyvoice.app"
+            customDomain="https://plausible.phantombits.dev"
+          >
+            <SpeedInsights />
+            {children}
+          </PlausibleProvider>
         </Providers>
       </body>
     </html>
